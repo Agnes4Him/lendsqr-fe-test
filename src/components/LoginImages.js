@@ -8,7 +8,7 @@ const LoginImages = () => {
                 <img src={logo} alt="Brand Logo" width="140px" />
             </nav>
             <div className='brand-image'>
-                <img src={image} alt="Brand" height="200px" />
+                <img src={image} alt="Brand" height="220px" />
             </div>
         </div>
     )
