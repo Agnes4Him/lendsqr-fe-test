@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { FaSuitcaseRolling, FaHouseUser, FaUserCheck, FaHandshake } from 'react-icons/fa'
 import { MdOutlineArrowDropDown } from 'react-icons/md'
 import { FiUsers } from 'react-icons/fi'
@@ -7,28 +8,43 @@ import { TbReportMoney } from 'react-icons/tb'
 import { HiOutlineDocumentReport } from 'react-icons/hi'
 import { AiOutlineAudit } from 'react-icons/ai'
 
-const SideBar = () => {
+const SideBar = ({email, dashboardFocus, usersFocus}) => {
+
     return (
         <div className="sidebar">
             <div className="sidebar-inner">
                 <div className="sidebar-div1">
-                    <div className="switch-org">
-                        <FaSuitcaseRolling />
-                        <p>Switch Organization</p>
-                        <MdOutlineArrowDropDown />
+                    <div className="org-container">
+                        <div className="switch-org">
+                            <FaSuitcaseRolling />
+                            <p>Switch Organization</p>
+                            <MdOutlineArrowDropDown />
+                        </div>
                     </div>
-                    <div className="dashboard-div">
+                    { dashboardFocus ?
+                    <div className="dashboard-container focus"><div className="dashboard-div">
                         <FaHouseUser />
                         <p>Dashboard</p>
-                    </div>
+                    </div></div>
+                    :
+                    <div className="dashboard-container"><div className="dashboard-div">
+                        <FaHouseUser />
+                        <p>Dashboard</p>
+                    </div></div> }                   
                 </div>
                 <div className="sidebar-div2">
                     <p className="main-text">CUSTOMERS</p>
                     <ul className="div2-ul">
-                        <li className="users-cont">
+                        { usersFocus ?
+                        <li className="focus">
                             <FiUsers />
-                            <p>Users</p>
+                            <p><Link to={`/users/${email}`} style={{textDecoration:"none"}}>Users</Link></p>
                         </li>
+                        :
+                        <li>
+                            <FiUsers />
+                            <p><Link to={`/users/${email}`} style={{textDecoration:"none"}}>Users</Link></p>
+                        </li> }
                         <li>
                             <RiUserSearchFill />
                             <p>Guarantors</p>

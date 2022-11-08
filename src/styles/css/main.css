@@ -237,9 +237,14 @@
   box-shadow: 2px 2px 6px grey;
 }
 
-.sidebar-div1 {
+.sidebar .org-container, .sidebar .dashboard-container {
+  margin-bottom: 1.5rem;
   padding-left: 2.5vw;
-  margin-bottom: 2rem;
+}
+
+.sidebar .dashboard-container {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .switch-org {
@@ -294,7 +299,7 @@
   color: #213F7D;
 }
 
-.sidebar-div2 .users-cont {
+.sidebar .focus {
   background-color: #e5fafa;
   border-left: 3px solid #39CDCC;
 }
@@ -313,7 +318,7 @@
 
 .dashboard-body .main-inner {
   margin: auto;
-  width: 85%;
+  width: 95%;
   padding-top: 3.5rem;
 }
 
@@ -331,11 +336,39 @@
   margin-top: 3rem;
 }
 
-.users-metrics .div1, .users-metrics .div2, .users-metrics .div3, .users-metrics .div4 {
+.users-metrics .box {
   box-shadow: 0px 0px 5px gray;
   padding: 1rem;
-  width: 16vw;
-  height: 16vh;
+  flex: 1 1 0;
+  width: 0;
+}
+
+.users-metrics .box div {
+  width: 22px;
+  height: 22px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.users-metrics .box1-div {
+  background-color: #DF18FF;
+}
+
+.users-metrics .box2-div {
+  background-color: #5718FF;
+}
+
+.users-metrics .box3-div {
+  background-color: #F55F44;
+}
+
+.users-metrics .box4-div {
+  background-color: #FF3366;
+}
+
+.box2, .box3, .box4 {
+  margin-left: 1rem;
 }
 
 .users-metrics .text {
@@ -344,6 +377,7 @@
   font-weight: 500;
   line-height: 16.42px;
   color: #545F7D;
+  margin-bottom: 0.5rem;
 }
 
 .users-metrics .number {
@@ -352,6 +386,55 @@
   font-weight: 600;
   line-height: 28.15px;
   color: #213F7D;
+}
+
+.users-data {
+  box-shadow: 0px 0px 5px grey;
+  margin-top: 3rem;
+  padding-top: 1rem;
+}
+
+.users-data Table {
+  width: 100%;
+}
+
+.users-data th {
+  font-family: "Work Sans";
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 12.08px;
+  color: #545F7D;
+  text-align: left;
+}
+
+.users-data td {
+  border-bottom: 1px solid #213F7D;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-family: "Work Sans";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.42px;
+  color: #545F7D;
+}
+
+.users-data th, .users-data td {
+  padding-left: 0.5rem;
+}
+
+.users-data span {
+  margin-left: 0.25rem;
+}
+
+.users-data .status-btn {
+  font-family: "Work Sans";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.42px;
+  color: #E9B200;
+  background-color: #fceec1;
+  border: none;
+  border-radius: 50px;
 }
 
 body {

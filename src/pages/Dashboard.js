@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import TopBar from "../components/TopBar"
 import SideBar from "../components/SideBar"
-import { FiUsers } from 'react-icons/fi'
-import { HiOutlineDocumentReport } from 'react-icons/hi'
-import { GiMoneyStack } from 'react-icons/gi'
+import UsersMetrics from '../components/UsersMetrics'
+import DashboardUsersData from '../components/DashboardUsersData'
 
 const Dashboard = () => {
 
     const [data, setData] = useState([])
+    const [dashboardFocus, setDashboardFocus] = useState(true)
 
     const {email} = useParams()
 
@@ -38,33 +38,11 @@ const Dashboard = () => {
         <div className="dashboard-container">
             <TopBar avatar={avatar} userName={userName} />
             <div className="dashboard-body">
-                <SideBar />
+                <SideBar dashboardFocus={dashboardFocus} email={email} />
                 <div className="main">
                     <div className="main-inner">
-                        <p>Users</p>
-                        <div className="users-metrics">
-                            <div className="div1">
-                                <div><FiUsers /></div>
-                                <p className="text">USERS</p>
-                                <p className="number">2,345</p>
-                            </div>
-                            <div className="div2">
-                                <div><FiUsers /></div>
-                                <p className="text">ACTIVE USERS</p>
-                                <p clasName="number">2,345</p>
-                            </div>
-                            <div className="div3">
-                                <div><HiOutlineDocumentReport /></div>
-                                <p className="text">USERS WITH LOANS</p>
-                                <p className="number">2,345</p>
-                            </div>
-                            <div className="div4">
-                                <div><GiMoneyStack /></div>
-                                <p className="text">USERS WITH SAVINGS</p>
-                                <p className="number">2,345</p>
-                            </div>
-                        </div>
-                        <div className="users-data"></div>
+                        <UsersMetrics data={data} />
+                        <DashboardUsersData data={data} />
                     </div>
                 </div>
             </div>

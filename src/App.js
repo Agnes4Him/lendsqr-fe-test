@@ -12,7 +12,7 @@ const App = () => {
           <Route path="/" exact element={<Login />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/dashboard/:email" element={<Dashboard />} />
-          <Route path="/users" element={<Users />} />
+          <Route path="/users/:email" element={<Users />} />
           <Route path="/user-details/:id" element={<UserDetails />} />
         </Routes>
     </div>
