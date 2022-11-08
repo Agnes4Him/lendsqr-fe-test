@@ -34,7 +34,7 @@ const LoginForm = () => {
                 setLoginError("")
                 setLoginSuccess("Login successful")
                 setTimeout(() => {
-                    navigate("/dashboard")
+                    navigate(`/dashboard/${email}`)
                 }, 1500)
             }else {
                 if (localStorage.getItem(email) !== password) {
@@ -44,7 +44,7 @@ const LoginForm = () => {
                     setLoginError("")
                     setLoginSuccess("Login successful")
                     setTimeout(() => {
-                        navigate("/dashboard")
+                        navigate(`/dashboard/${email}`)
                     }, 1500)
                 }
             }

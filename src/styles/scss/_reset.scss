@@ -1,0 +1,47 @@
+.reset-container {
+    margin:auto;
+    width:85vw;
+    padding-top:5rem;
+}
+
+.reset-container form {
+    display:flex;
+    flex-direction:column;
+    width:40%;
+}
+
+.reset-container input {
+    margin-bottom:1.5rem;
+    padding:0.75rem 1rem;
+    outline:none;
+    border:2px solid #545F7D;
+    border-radius:5px;
+}
+
+.reset-btn {
+    padding:0.75rem 0;
+    border:none;
+    border-radius:5px;
+    background-color:#39CDCC;
+    color:#FFFFFF;
+}
+
+.reset-btn:hover {
+    background-color:#80f0f0;
+}
+
+.reset-error {
+    margin-top:3rem;
+    color:red;
+    font-weight:bold;
+    width:40%;
+    text-align:center;
+}
+
+.reset-success {
+    margin-top:3rem;
+    color:green;
+    font-weight:bold;
+    width:40%;
+    text-align:center;
+}

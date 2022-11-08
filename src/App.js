@@ -11,7 +11,7 @@ const App = () => {
         <Routes>
           <Route path="/" exact element={<Login />} />
           <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/:email" element={<Dashboard />} />
           <Route path="/users" element={<Users />} />
           <Route path="/user-details/:id" element={<UserDetails />} />
         </Routes>

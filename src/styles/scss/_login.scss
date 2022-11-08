@@ -44,6 +44,7 @@
     height:7vh;
     padding-left:1rem;
     margin-top:1.5rem;
+    outline:none;
     border:2px solid #545F7D;
     border-radius:5px;
 }
@@ -51,7 +52,7 @@
 .show-btn, .hide-btn {
     position:absolute;
     right:9vw;
-    top:55vh;
+    top:57vh;
     border:none;
     color:#39CDCC;
     font-family:"Avenir Next";
@@ -74,9 +75,12 @@
     border:none;
     background-color:#39CDCC;
     color:#FFFFFF;
-    padding-top:1rem;
-    padding-bottom:1rem;
+    padding:1rem 0;
     border-radius:5px;
+}
+
+.login-btn:hover {
+    background-color:#80f0f0;
 }
 
 .login-error {

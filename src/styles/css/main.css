@@ -50,6 +50,7 @@
   height: 7vh;
   padding-left: 1rem;
   margin-top: 1.5rem;
+  outline: none;
   border: 2px solid #545F7D;
   border-radius: 5px;
 }
@@ -57,7 +58,7 @@
 .show-btn, .hide-btn {
   position: absolute;
   right: 9vw;
-  top: 55vh;
+  top: 57vh;
   border: none;
   color: #39CDCC;
   font-family: "Avenir Next";
@@ -80,9 +81,12 @@
   border: none;
   background-color: #39CDCC;
   color: #FFFFFF;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem 0;
   border-radius: 5px;
+}
+
+.login-btn:hover {
+  background-color: #80f0f0;
 }
 
 .login-error {
@@ -99,6 +103,255 @@
   right: 20vw;
   color: green;
   font-weight: bold;
+}
+
+.reset-container {
+  margin: auto;
+  width: 85vw;
+  padding-top: 5rem;
+}
+
+.reset-container form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.reset-container input {
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  outline: none;
+  border: 2px solid #545F7D;
+  border-radius: 5px;
+}
+
+.reset-btn {
+  padding: 0.75rem 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #39CDCC;
+  color: #FFFFFF;
+}
+
+.reset-btn:hover {
+  background-color: #80f0f0;
+}
+
+.reset-error {
+  margin-top: 3rem;
+  color: red;
+  font-weight: bold;
+  width: 40%;
+  text-align: center;
+}
+
+.reset-success {
+  margin-top: 3rem;
+  color: green;
+  font-weight: bold;
+  width: 40%;
+  text-align: center;
+}
+
+.topbar-container {
+  box-shadow: 0px 0px 6px grey;
+  padding: 1.25rem 0;
+}
+
+.topbar-inner {
+  margin: auto;
+  width: 95vw;
+  display: flex;
+}
+
+.logo-search {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-search form {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-search input {
+  padding: 0.35rem 1rem;
+  width: 20vw;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border: 1px solid #213F7D;
+  outline: none;
+}
+
+.logo-search button {
+  padding: 0.35rem;
+  width: 3vw;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #39CDCC;
+  color: #FFFFFF;
+  border: none;
+}
+
+.avatar-docs {
+  width: 50%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  color: #213F7D;
+}
+
+.avatar-docs .docs {
+  border-bottom: 1px solid #213F7D;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18.75px;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+}
+
+.bell-icon, .avatar, .username {
+  margin-left: 1rem;
+}
+
+.avatar-docs .username {
+  font-family: "Work Sans";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18.77px;
+}
+
+.dashboard-body {
+  display: flex;
+}
+
+.sidebar {
+  width: 19%;
+  padding-top: 2rem;
+  box-shadow: 2px 2px 6px grey;
+}
+
+.sidebar-div1 {
+  padding-left: 2.5vw;
+  margin-bottom: 2rem;
+}
+
+.switch-org {
+  display: flex;
+  color: #213F7D;
+  margin-bottom: 1.75rem;
+}
+
+.switch-org p {
+  font-family: "Work Sans";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18.77px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.dashboard-div {
+  display: flex;
+  color: #213F7D;
+}
+
+.dashboard-div p {
+  margin-left: 0.5rem;
+  font-family: "Work Sans";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18.77px;
+}
+
+.sidebar-inner .main-text {
+  font-family: "Work Sans";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14.08px;
+  padding-left: 2.5vw;
+  margin-bottom: 0.75rem;
+  color: #545F7D;
+}
+
+.sidebar-inner ul {
+  list-style-type: none;
+}
+
+.sidebar-inner li {
+  display: flex;
+  padding-left: 2.5vw;
+  align-items: center;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+  color: #213F7D;
+}
+
+.sidebar-div2 .users-cont {
+  background-color: #e5fafa;
+  border-left: 3px solid #39CDCC;
+}
+
+.div2-ul p, .div3-ul p, .div4-ul p {
+  margin-left: 0.75rem;
+  font-family: "Work Sans";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18.77px;
+}
+
+.dashboard-body .main {
+  width: 81%;
+}
+
+.dashboard-body .main-inner {
+  margin: auto;
+  width: 85%;
+  padding-top: 3.5rem;
+}
+
+.main p {
+  font-family: "Work Sans";
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28.15px;
+  color: #213F7D;
+}
+
+.users-metrics {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.users-metrics .div1, .users-metrics .div2, .users-metrics .div3, .users-metrics .div4 {
+  box-shadow: 0px 0px 5px gray;
+  padding: 1rem;
+  width: 16vw;
+  height: 16vh;
+}
+
+.users-metrics .text {
+  font-family: "Work Sans";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.42px;
+  color: #545F7D;
+}
+
+.users-metrics .number {
+  font-family: "Work Sans";
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28.15px;
+  color: #213F7D;
 }
 
 body {
