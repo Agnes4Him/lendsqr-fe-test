@@ -1,0 +1,220 @@
+.details-main {
+    background-color:#E5E5E5;
+    width:81%;
+    padding-top:3rem;
+}
+
+.details-container {
+    margin:auto;
+    width:95%;
+}
+
+.details-container .back-link {
+    color:#545F7D
+}
+
+.details-container .arrow {
+    margin-top:0.5rem;
+}
+
+.details-container .back-link span {
+    font-family:"Work Sans";
+    font-size:16px;
+    font-weight:400;
+    margin-left:0.5rem;
+}
+
+.details-container .text-btns {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:1.5rem;
+}
+
+.details-container .text-btns p {
+    font-family:"Work Sans";
+    font-size:24px;
+    font-weight:500;
+    color:#213F7D;   
+}
+
+.details-container .details-btns button {
+    padding:0.5rem 1.5rem;
+    border-radius:5px;
+    font-family:"Work Sans";
+    font-size:14px;
+    font-weight:600;
+    background:transparent;
+}
+
+.details-container .details-btns .activate-btn {
+    margin-left:1rem;
+    color:#39CDCC;
+    border:1px solid #39CDCC;
+}
+
+.details-container .details-btns .blacklist-btn {
+    color:#E4033B;
+    border:1px solid #E4033B
+}
+
+.details-container .user-intro {
+    box-shadow:0px 0px 5px grey;
+    margin-top:3rem;
+    width:100%;
+    padding-top:2rem;
+}
+
+.details-container .user-intro .intro-inner {
+    margin:auto;
+    width:95%;
+}
+
+.details-container {
+    .user-intro {
+        .intro-inner {
+            .upper-div {
+                display:flex;
+                justify-content:flex-start;
+                align-items:center;
+                .img-names {
+                    display:flex;
+                    align-items:center;
+                    border-right:1px solid #545F7D;
+                    padding-right:1rem;
+                    line-height:28px;
+                }
+                .img-div {
+                    width: 60px;
+                    height:60px;
+                    background-color:#bbbbbb;
+                    border-radius:30px;
+                    display:flex;
+                    justify-content:center;
+                    align-items:center;
+                    .profile-img {
+                        width:60px;
+                        height:40px;
+                        color:#213F7D;
+                    }
+                }
+                .names-div {
+                    margin-left:1.5rem;
+                    .user-names {
+                        font-family:"Work Sans";
+                        font-size:22px;
+                        font-weight:500;
+                        color:#213F7D;
+                    }
+
+                    .user-id {
+                        font-family:"Work Sans";
+                        font-size:14px;
+                        font-weight:400;
+                        color:#545F7D;
+                    }
+                }
+
+                .tier-container {
+                    padding-left:1rem;
+                    padding-right:1rem;
+                    border-right:1px solid #545F7D;
+                    line-height:28px;
+                    .tier-text {
+                        font-family:"Work Sans";
+                        font-size:14px;
+                        font-weight:500;
+                        color:#545F7D;
+                    }
+                }
+                .balance-container {
+                    padding-left:1rem;
+                    line-height:28px;
+                    .balance {
+                        font-family:"Work Sans";
+                        font-size:22px;
+                        font-weight:500;
+                        color:#213F7D;
+                    }
+
+                    .acct-number {
+                        font-family:"Work Sans";
+                        font-size:12px;
+                        font-weight:400;
+                        color:#213F7D;
+                    }
+                }
+            }
+
+            .lower-div {
+                display:flex;
+                justify-content:space-between;
+                margin-top:5rem;
+                div {
+                    font-family:"SF Compact Text";
+                    font-size:16px;
+                    font-weight:400;
+                    text-align:center;
+                }
+                .gen-details {
+                    border-bottom:2px solid #39CDCC;
+                    color:#39CDCC;
+                    font-family:"Work Sans";
+                    padding-left:1rem;
+                    padding-right:1rem;
+                }
+            }
+        }
+    }
+
+    .user-info {
+        box-shadow:0px 0px 5px grey;
+        margin-top:3rem;
+        width:100%;
+        padding-top:2rem;
+        .userinfo-inner {
+            margin:auto;
+            width:95%;
+            .main-text {
+                font-family:"Work Sans";
+                font-size:16px;
+                font-weight:500;
+                color:#213F7D;
+            } 
+            
+            .heading {
+                font-family:"Work Sans";
+                font-size:12px;
+                font-weight:400;
+                color:#545F7D;       
+            }
+
+            .content {
+                font-family:"Work Sans";
+                font-size:16px;
+                font-weight:500;
+                color:#545F7D;
+            }
+            
+            .personal-info {
+                display:flex;
+                justify-content:space-between;
+            }
+
+            .education-employment {
+                display:flex;
+                justify-content:space-between;
+            }
+
+            .socials {
+                display:flex;
+                justify-content:flex-start;
+            }
+
+            .guarantor {
+                display:flex;
+                justify-content:flex-start;
+            }
+        }
+    }
+}

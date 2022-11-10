@@ -43,7 +43,7 @@ const SideBar = ({email, dashboardFocus, usersFocus}) => {
                         :
                         <li>
                             <FiUsers />
-                            <p><Link to={`/users/${email}`} style={{textDecoration:"none"}}>Users</Link></p>
+                            <p><Link to={`/users/${email}`} style={{textDecoration:"none"}} className="users-link">Users</Link></p>
                         </li> }
                         <li>
                             <RiUserSearchFill />

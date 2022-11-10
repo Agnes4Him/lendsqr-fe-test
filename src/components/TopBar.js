@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import logo from '../Images/logo.png'
 import { MdSearch, MdOutlineArrowDropDown } from 'react-icons/md'
 import { BsBell } from 'react-icons/bs'
@@ -7,7 +8,7 @@ const TopBar = ({avatar, userName}) => {
         <div className="topbar-container">
             <div className="topbar-inner">
                 <div className="logo-search">
-                    <img src={logo} alt="Logo" width="110px" />
+                    <Link to="/" style={{textDecoration:"none"}}><img src={logo} alt="Logo" width="110px" /></Link>
                     <form>
                         <input 
                         type="text"

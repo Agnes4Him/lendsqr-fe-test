@@ -1,0 +1,82 @@
+.filter-block {
+    position:absolute;
+    top:70vh;
+    left:21vw;
+    width:27vw;
+    padding-top:2rem;
+    padding-bottom:2rem;
+    box-shadow:0px 0px 5px grey;
+    background-color:#FFFFFF;
+}
+
+.filter-block form {
+    margin:auto;
+    width:85%;
+}
+
+.filter-block p {
+    font-family:"Work Sans";
+    font-size:14px;
+    font-weight:500;
+    color:#545F7D;
+    margin-bottom:0.5rem;
+}
+
+.filter-block select, .filter-block input {
+    width:100%;
+    border:1px solid #213F7D;
+    padding:0.75rem 1rem;
+    margin-bottom:1rem;
+    border-radius:5px;
+}
+
+.filterblk-btn {
+    text-align:center;
+    margin-top:1rem;
+}
+
+.filterblk-btn button {
+    padding:0.65rem 1.65rem;
+    border-radius:5px;
+    font-family:"Work Sans";
+    font-size:14px;
+    font-weight:600;
+
+}
+
+.filterblk-reset {
+    margin-right:1rem;
+    color:#545F7D;
+    border:1px solid #545F7D;
+}
+
+.filterblk-filter {
+    background-color:#39CDCC;
+    border:none;
+    color:#FFFFFF;
+}
+
+.actions-container {
+    background:transparent
+    .users-actions {
+        width:17vw;
+        position:absolute;
+        top:77vh;
+        right:2vw;
+        background-color:#FFFFFF;
+        padding:0.75rem;
+        box-shadow:0px 0px 5px grey;
+        div {
+            margin-bottom:1rem;
+            cursor:pointer;
+        }
+    }
+}
+
+.users-actions span, .users-actions .view {
+    margin-left:0.5rem;
+    font-family:"Work Sans";
+    font-size:14px;
+    font-weight:500;
+    color:#545F7D;
+}
