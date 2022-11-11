@@ -57,7 +57,7 @@
 }
 
 .actions-container {
-    background:transparent
+    background:transparent;
     .users-actions {
         width:17vw;
         position:absolute;
@@ -79,4 +79,9 @@
     font-size:14px;
     font-weight:500;
     color:#545F7D;
+}
+
+.view {
+    background:transparent;
+    border:none;
 }

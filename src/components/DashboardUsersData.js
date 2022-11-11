@@ -1,10 +1,20 @@
 import { useState } from 'react'
 import { TbCone2, TbDotsVertical } from 'react-icons/tb'
 import StatusActions from './StatusActions'
+import Pagination from './Pagination'
+import RecordIndicator from './RecordIndicator'
 
 const DashboardUsersData = ({data, id}) => {
 
+    const [user, setUser] = useState({})
     const [showStatusActions, setShowStatusActions] = useState(false)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [recordsPerPage] = useState(15)
+
+    const indexOfLastRecord = currentPage * recordsPerPage
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage
+    const nPages = Math.ceil(data.length/recordsPerPage)
+    const dataTotal = data.length
 
     const handleJoinDate = (itemDate) => {
         let date = new Date(itemDate)
@@ -25,7 +35,8 @@ const DashboardUsersData = ({data, id}) => {
         return month + " " + day + "," + " " + year + " " + modHour
     }
 
-    const handleStatusDotsClick = () => {
+    const handleStatusDotsClick = (item) => {
+        setUser(item)
         if (!showStatusActions) {
             setShowStatusActions(true)
         }else {
@@ -37,7 +48,7 @@ const DashboardUsersData = ({data, id}) => {
 
         let currentYear = new Date().getFullYear()
         let active = (item.lastActiveDate).split("T")
-        let activeYear = parseInt(active.split("-")[0])
+        let activeYear = parseInt(active[0].split("-")[0])
         let yearDiff = activeYear - currentYear
 
         if (yearDiff >= 50) {
@@ -51,22 +62,23 @@ const DashboardUsersData = ({data, id}) => {
         }
 
         return item["status"]
-    }
+    } 
 
-    const handleOnActvate = (item, itemStatus) => {
-        if (itemStatus !== "active") {
-            item["status"] = "active"
+    const handleActivate = (user) => {
+        if (user.status !== "active") {
+            user["status"] = "active"
         }
     }
 
-    const handleOnBlacklist = (item, itemStatus) => {
-        if (itemStatus !== "blacklisted") {
-            item["status"] = "blacklisted"
+    const handleBlacklist = (user) => {
+        if (user.status !== "blacklisted") {
+            user["status"] = "blacklisted"
         }
     }
 
 
     return (
+        <div>
         <div className="users-data">
             <table>
                 <tr>
@@ -77,20 +89,24 @@ const DashboardUsersData = ({data, id}) => {
                     <th>DATE JOINED<span><TbCone2 /></span></th>
                     <th>STATUS<span><TbCone2 /></span></th>
                 </tr>
-                {data.map((item) => (
+                {data.slice(indexOfFirstRecord, indexOfLastRecord).map((item) => (
                     <tr key={item.id}>
                         <td>{item.orgName}</td>
                         <td>{item.userName}</td>
                         <td>{item.email}</td>
                         <td>{item.phoneNumber}</td>
                         <td>{handleJoinDate(item.createdAt)}</td>
-                        <td><button className={handleStatus(item)}>{handleStatus(item)}</button>
-                        <span className="status-dots"><TbDotsVertical onClick={handleStatusDotsClick} /></span>
-                        </td>
-                        <StatusActions id={id} showStatusActions={showStatusActions} onActivate={handleOnActvate(item, handleStatus(item))} onBlacklist={handleOnBlacklist(item, handleStatus(item))} />
+                        <td><button className={handleStatus(item)}>{handleStatus(item)}</button></td>
+                        <span className="status-dots"><TbDotsVertical onClick={() => handleStatusDotsClick(item)} /></span>
                     </tr>
                 ))}
             </table>
+        </div>
+            <div className="pagination-div">
+                <RecordIndicator indexOfLast={indexOfLastRecord} dataTotal={dataTotal} />
+                <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            </div>
+            <StatusActions showStatusActions={showStatusActions} id={id} user={user} onActivate={handleActivate(user)} onBlacklist={handleBlacklist(user)} />
         </div>
     )
 }

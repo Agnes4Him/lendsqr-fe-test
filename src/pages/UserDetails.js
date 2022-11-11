@@ -9,12 +9,13 @@ import {FcRating} from 'react-icons/fc'
 const Dashboard = () => {
 
     const [data, setData] = useState([])
+    const [userData, setUserData] = useState({})
     const [usersFocus, setUsersFocus] = useState(true)
 
     const {id} = useParams()
 
     useEffect(() => {
-        fetch("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users")
+        fetch("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users", {mode:'cors'})
         .then((response) => {
             console.log(response)
             return response.json()
@@ -23,7 +24,10 @@ const Dashboard = () => {
             console.log(result)
             setData(result)
         })
-    }, [id])
+        .catch((err) => {
+            console.log(err)
+        })
+    }, [userData.email])
 
     var avatar
     var userName
@@ -37,10 +41,13 @@ const Dashboard = () => {
         }
     }
 
+    setUserData(JSON.parse(localStorage.getItem("user")))
+    console.log(userData)
+
     return (
-        <div className="dashboard-container">
+        <div className="userdetails-container">
             <TopBar avatar={avatar} userName={userName} />
-            <div className="dashboard-body">
+            <div className="userdetails-body">
                 <SideBar usersFocus={usersFocus} email={email} />
                 <div className="details-main">
                     <div className="details-container">
@@ -57,9 +64,9 @@ const Dashboard = () => {
                                 <div className="upper-div">
                                     <div className="img-names">
                                         <div className="img-div"><AiOutlineUser className="profile-img" /></div>
-                                        <div className="names-div">
-                                            <p classNames="user-names">FirstName LastName</p>
-                                            <p className="user-id">Labsgjkskbbbb</p>
+                                        <div className="name-div">
+                                            <p className="user-name">{userData.profile.firstName + " " + userData.profile.lastName}</p>
+                                            <p className="user-id">{userData.accountNumber}</p>
                                         </div>
                                     </div>
                                     <div className="tier-container">
@@ -67,8 +74,8 @@ const Dashboard = () => {
                                         <FcRating className="rating-icon" /><FcRating className="rating-icon" /><FcRating className="rating-icon" />
                                     </div>
                                     <div className="balance-container">
-                                        <p className="balance">#200,000.OO</p>
-                                        <p className="acct-number">account number</p>
+                                        <p className="balance">{userData.accountBalance}</p>
+                                        <p className="acct-number">{userData.accountNumber}</p>
                                     </div>
                                 </div>
                                 <div className="lower-div">
@@ -88,7 +95,7 @@ const Dashboard = () => {
                                     <div className="fullname-marital">
                                         <div className="fullname">
                                             <p className="heading">FULL NAME</p>
-                                            <p className="content">Grace Effiom</p>
+                                            <p className="content">{userData["profile"]["firstName"] + " " + userData["profile"]["lastName"]}</p>
                                         </div>
                                         <div className="marital">
                                             <p className="heading">MARITAL STATUS</p>
@@ -98,7 +105,7 @@ const Dashboard = () => {
                                     <div className="phone-children">
                                         <div className="phone">
                                             <p className="heading">PHONE NUMBER</p>
-                                            <p className="content">070897654321</p>
+                                            <p className="content">{userData.phoneNumber}</p>
                                         </div>
                                         <div className="children">
                                             <p className="heading">CHILDREN</p>
@@ -108,20 +115,20 @@ const Dashboard = () => {
                                     <div className="email-residence">
                                         <div className="personal-email">
                                             <p className="heading">EMAIL ADDRESS</p>
-                                            <p className="content">grace@gmail.com</p>
+                                            <p className="content">{userData.email}</p>
                                         </div>
                                         <div className="residence">
                                             <p className="heading">TYPE OF RESIDENCE</p>
-                                            <p className="content">Parent's Apartment</p>
+                                            <p className="content">{userData.profile.address}</p>
                                         </div>
                                     </div>
                                     <div className="bvn">
                                         <p className="heading">BVN</p>
-                                        <p className="content">090876541826</p>
+                                        <p className="content">{userData.profile.bvn}</p>
                                     </div>
                                     <div className="gender">
                                         <p className="heading">GENDER</p>
-                                        <p className="content">Female</p>
+                                        <p className="content">{userData.profile.gender}</p>
                                     </div>
                                 </div>
                                 <hr></hr>
@@ -130,36 +137,36 @@ const Dashboard = () => {
                                     <div className="education-email">
                                         <div className="education-level">
                                             <p className="heading">LEVEL OF EDUCATION</p>
-                                            <p className="content">B.Sc</p>
+                                            <p className="content">{userData.education.level}</p>
                                         </div>
                                         <div className="office-email">
                                             <p className="heading">OFFICE EMAIL</p>
-                                            <p className="content">grace@lendsqr.com</p>
+                                            <p className="content">{userData.education.officeEmail}</p>
                                         </div>
                                     </div>
                                     <div className="employment-income">
                                         <div className="employment-status">
                                             <p className="heading">EMPLOYMENT STATUS</p>
-                                            <p className="content">Employed</p>
+                                            <p className="content">{userData.education.employmentStatus}</p>
                                         </div>
                                         <div className="income">
                                             <p className="heading">MONTHLY INCOME</p>
-                                            <p className="content">#200,000-#400,000</p>
+                                            <p className="content">{userData.education.monthlyIncome[1] + "-" + userData.education.monthlyIncome[0]}</p>
                                         </div>
                                     </div>
                                     <div className="sector-loan">
                                         <div className="sector">
                                             <p className="heading">SECTOR OF EMPLOYMENT</p>
-                                            <p className="content">FinTech</p>
+                                            <p className="content">{userData.education.sector}</p>
                                         </div>
                                         <div className="loan">
                                             <p className="heading">LOAN REPAYMENT</p>
-                                            <p className="content">#40,000</p>
+                                            <p className="content">{userData.education.loanRepayment}</p>
                                         </div>
                                     </div>
                                     <div className="employ-duration">
                                         <p className="heading">DURATION OF EMPLOYMENT</p>
-                                        <p className="content">2 years</p>
+                                        <p className="content">{userData.education.duration}</p>
                                     </div>
                                 </div>
                                 <hr></hr>
@@ -167,31 +174,31 @@ const Dashboard = () => {
                                 <div className="socials">
                                     <div className="twitter">
                                         <p className="heading">TWITTER</p>
-                                        <p className="content">@grace_effiom</p>
+                                        <p className="content">{userData.socials.twitter}</p>
                                     </div>
                                     <div className="facebook">
                                         <p className="heading">FACEBOOK</p>
-                                        <p className="content">Grace Effiom</p>
+                                        <p className="content">{userData.socials.facebook}</p>
                                     </div>
                                     <div className="instagram">
                                         <p className="heading">INSTAGRAM</p>
-                                        <p className="content">@grace_effiom</p>
+                                        <p className="content">{userData.socials.instagram}</p>
                                     </div>
                                 </div>
                                 <hr></hr>
-                                <p className="guarantor-heading main-text">Guarantors</p>
+                                <p className="guarantor-heading main-text">Guarantor</p>
                                 <div className="guarantor">
                                     <div className="guarantor-names">
                                         <p className="heading">FULL NAME</p>
-                                        <p className="content">Debby Ogana</p>
+                                        <p className="content">{userData.guarantor.firstName + " " + userData.guarantor.lastName}</p>
                                     </div>
                                     <div className="guarantor-phone">
                                         <p className="heading">PHONE NUMBER</p>
-                                        <p className="content">09078654327</p>
+                                        <p className="content">{userData.guarantor.phoneNumber}</p>
                                     </div>
                                     <div className="guarantor-email">
                                         <p className="heading">EMAIL ADDRESS</p>
-                                        <p className="content">debby@gmail.com</p>
+                                        <p className="content">guarantor@example.com</p>
                                     </div>
                                     <div className="guarantor-relationship">
                                         <p className="heading">RELATIONSHIP</p>

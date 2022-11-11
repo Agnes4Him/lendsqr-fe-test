@@ -27,7 +27,7 @@ const UsersMetrics = ({data}) => {
                 <div className="box box2">
                     <div className="box2-div"><FiUsers /></div>
                     <p className="text">ACTIVE USERS</p>
-                    <p clasName="number">{data.length}</p>
+                    <p className="number">{data.length}</p>
                 </div>            
                 <div className="box box3">
                     <div className="box3-div"><HiOutlineDocumentReport /></div>

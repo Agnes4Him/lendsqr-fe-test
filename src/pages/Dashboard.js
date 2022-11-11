@@ -12,8 +12,12 @@ const Dashboard = () => {
 
     const {email} = useParams()
 
+    var avatar
+    var userName
+    var id
+
     useEffect(() => {
-        fetch("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users")
+        fetch("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users", { mode: 'cors' })
         .then((response) => {
             console.log(response)
             return response.json()
@@ -21,16 +25,18 @@ const Dashboard = () => {
         .then((result) => {
             console.log(result)
             setData(result)
+        
         })
-    }, [email])
-
-    var avatar
-    var userName
+        .catch((err) => {
+            console.log("Error", err)
+        })
+    }, [])
 
     for(var i = 0; i < data.length; i++) {
         if (data[i]["email"] === email) {
             avatar = data[i]["profile"]["avatar"]
             userName = data[i]["userName"]
+            id = data[i]["id"]
         }
     }
 
@@ -42,7 +48,7 @@ const Dashboard = () => {
                 <div className="main">
                     <div className="main-inner">
                         <UsersMetrics data={data} />
-                        <DashboardUsersData data={data} />
+                        <DashboardUsersData data={data} id={id} />
                     </div>
                 </div>
             </div>

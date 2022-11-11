@@ -309,3 +309,58 @@
 .status-dots {
     color:#545F7D;
 }
+
+.pagination-div {
+    display:flex;
+    justify-content:space-between;
+    padding-top:2rem;
+    .pagination-nav ul {
+        display:flex;
+        list-style-type:none;
+        .page-item {
+            margin-left:1rem;
+            color:#545F7D;
+            font-family:"Work Sans";
+            font-size:16px;
+            font-weight:400;
+        }
+        a {
+            text-decoration:none;
+        }
+
+        .nav-icons {
+            color:#213F7D;
+            background-color:#d7e0f1;;
+        }
+
+        .next-icon {
+            margin-left:1rem;
+        }
+
+        .page-itemactive {
+            font-weight:500;
+        }
+    }
+
+    .display {
+        .display-text1, .display-text2 {
+            color:#545F7D;
+            font-family:"Work Sans";
+            font-size:14px;
+            font-weight:400;
+        }
+
+        .display-num {
+            color:#213F7D;
+            font-family:"Work Sans";
+            font-size:14px;
+            font-weight:400;
+            background-color:#c5d1e9;
+            padding:0.25rem 0.5rem;
+            text-align:center;
+            border-radius:5px;
+            margin-left:1rem;
+            margin-right:1rem;
+        }
+    }
+}

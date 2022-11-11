@@ -19,7 +19,7 @@ const Users = () => {
     const {email} = useParams()
 
     useEffect(() => {
-        fetch("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users")
+        fetch("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users", {mode:'cors'})
         .then((response) => {
             console.log(response)
             return response.json()
@@ -63,7 +63,7 @@ const Users = () => {
         setFilterDate(null)
         setFilterPhone(0)
         setFilterStatus("")
-        fetch("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users")
+        fetch("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users", {mode:'cors'})
         .then((response) => {
             console.log(response)
             return response.json()

@@ -1,3 +1,7 @@
+.userdetails-body {
+    display:flex;
+}
+
 .details-main {
     background-color:#E5E5E5;
     width:81%;
@@ -98,9 +102,9 @@
                         color:#213F7D;
                     }
                 }
-                .names-div {
+                .name-div {
                     margin-left:1.5rem;
-                    .user-names {
+                    .user-name {
                         font-family:"Work Sans";
                         font-size:22px;
                         font-weight:500;
@@ -172,6 +176,9 @@
         margin-top:3rem;
         width:100%;
         padding-top:2rem;
+        hr {
+            margin-bottom:1rem;
+        }
         .userinfo-inner {
             margin:auto;
             width:95%;
@@ -180,13 +187,15 @@
                 font-size:16px;
                 font-weight:500;
                 color:#213F7D;
+                margin-bottom:1.5rem;
             } 
             
             .heading {
                 font-family:"Work Sans";
                 font-size:12px;
                 font-weight:400;
-                color:#545F7D;       
+                color:#545F7D;
+                margin-bottom:0.5rem;       
             }
 
             .content {
@@ -194,6 +203,7 @@
                 font-size:16px;
                 font-weight:500;
                 color:#545F7D;
+                margin-bottom:1rem;
             }
             
             .personal-info {
@@ -208,12 +218,16 @@
 
             .socials {
                 display:flex;
-                justify-content:flex-start;
+                .facebook, .instagram {
+                    margin-left:4rem;
+                }
             }
 
             .guarantor {
                 display:flex;
-                justify-content:flex-start;
+                .guarantor-phone, .guarantor-email, .guarantor-relationship {
+                    margin-left:4rem;
+                }
             }
         }
     }

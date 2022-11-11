@@ -1,0 +1,3 @@
+<td><button className={handleStatus(item)}>{handleStatus(item)}</button></td>
+
+<StatusActions user={user} id={id} showStatusActions={showStatusActions} />
