@@ -8,13 +8,17 @@ import DashboardUsersData from '../components/DashboardUsersData'
 const Users = () => {
 
     const [data, setData] = useState([])
-    const [usersFocus, setUsersFocus] = useState(true)
+    const [dataPresent, setDataPresent] = useState(false)
+    const [usersError, setUsersError] = useState("")
+    const [usersFocus] = useState(true)
     const [filterOrg, setFilterOrg] = useState("")
     const [filterUserName, setFilterUserName] = useState("")
     const [filterEmail, setFilterEmail] = useState("")
     const [filterDate, setFilterDate] = useState(null)
     const [filterPhone, setFilterPhone] = useState(0)
     const [filterStatus, setFilterStatus] = useState("")
+    const [showFilterButton] = useState(true)
+    const [showFilterBox, setShowFilterBox] = useState(false)
 
     const {email} = useParams()
 
@@ -27,9 +31,14 @@ const Users = () => {
         .then((result) => {
             console.log(result)
             setData(result)
+            setDataPresent(true)
+            setUsersError("")
         })
         .catch((err) => {
             console.log(err)
+            setData({})
+            setDataPresent(false)
+            setUsersError("Unable to fetch data. Try again later")
         })
     }, [email])
 
@@ -45,6 +54,14 @@ const Users = () => {
         }
     }
 
+    const handleShowFilterBox = () => {
+        if (!showFilterBox) {
+            setShowFilterBox(true)
+        }else {
+            setShowFilterBox(false)
+        }
+    }
+
     const handleFilter =(e) => {
         e.preventDefault()
         let newResult = []
@@ -54,6 +71,8 @@ const Users = () => {
             }
         }
         setData(newResult)
+        setDataPresent(true)
+        setUsersError("")
     }
 
     const handleFilterReset = () => {
@@ -71,9 +90,14 @@ const Users = () => {
         .then((result) => {
             console.log(result)
             setData(result)
+            setDataPresent(true)
+            setUsersError("")
         })
         .catch((err) => {
             console.log(err)
+            setData({})
+            setDataPresent(false)
+            setUsersError("Unable to fetch data. Try again later")
         })
     }
 
@@ -83,13 +107,14 @@ const Users = () => {
             <div className="dashboard-body">
                 <SideBar usersFocus={usersFocus} />
                 <div className="main">
-                    <div className="main-inner">
-                        <UsersMetrics data={data} />
+                    {dataPresent && <div className="main-inner">
+                        <UsersMetrics data={data} showFilterButton={showFilterButton} onShowFilterBox={handleShowFilterBox} />
                         <DashboardUsersData data={data} id={id} />
-                    </div>
+                    </div>}
+                    {!dataPresent && <p className="users-error">{usersError}</p>}
                 </div>
             </div>
-            <div className="filter-block">
+            { showFilterBox && <div className="filter-block">
             <form>
                 <p>Organization</p>
                 <select placeholder="Select"
@@ -144,7 +169,7 @@ const Users = () => {
                     <button className="filterblk-filter" onClick={handleFilter}>Filter</button>
                 </div>
             </form>
-            </div>
+            </div> }
         </div>
     )
 }

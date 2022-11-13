@@ -6,8 +6,8 @@ import RecordIndicator from './RecordIndicator'
 
 const DashboardUsersData = ({data, id}) => {
 
-    const [user, setUser] = useState({})
     const [showStatusActions, setShowStatusActions] = useState(false)
+    const [status, setStatus] = useState("")
     const [currentPage, setCurrentPage] = useState(1)
     const [recordsPerPage] = useState(15)
 
@@ -36,7 +36,9 @@ const DashboardUsersData = ({data, id}) => {
     }
 
     const handleStatusDotsClick = (item) => {
-        setUser(item)
+
+        localStorage.setItem("user", JSON.stringify(item))
+        setStatus(item.status)
         if (!showStatusActions) {
             setShowStatusActions(true)
         }else {
@@ -64,19 +66,6 @@ const DashboardUsersData = ({data, id}) => {
         return item["status"]
     } 
 
-    const handleActivate = (user) => {
-        if (user.status !== "active") {
-            user["status"] = "active"
-        }
-    }
-
-    const handleBlacklist = (user) => {
-        if (user.status !== "blacklisted") {
-            user["status"] = "blacklisted"
-        }
-    }
-
-
     return (
         <div>
         <div className="users-data">
@@ -96,8 +85,7 @@ const DashboardUsersData = ({data, id}) => {
                         <td>{item.email}</td>
                         <td>{item.phoneNumber}</td>
                         <td>{handleJoinDate(item.createdAt)}</td>
-                        <td><button className={handleStatus(item)}>{handleStatus(item)}</button></td>
-                        <span className="status-dots"><TbDotsVertical onClick={() => handleStatusDotsClick(item)} /></span>
+                        <td><button className={handleStatus(item)}>{handleStatus(item)}</button></td><TbDotsVertical className="dots" onClick={() => handleStatusDotsClick(item)} />
                     </tr>
                 ))}
             </table>
@@ -106,7 +94,7 @@ const DashboardUsersData = ({data, id}) => {
                 <RecordIndicator indexOfLast={indexOfLastRecord} dataTotal={dataTotal} />
                 <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
             </div>
-            <StatusActions showStatusActions={showStatusActions} id={id} user={user} onActivate={handleActivate(user)} onBlacklist={handleBlacklist(user)} />
+            <StatusActions showStatusActions={showStatusActions} id={id} status={status} setStatus={setStatus} />
         </div>
     )
 }

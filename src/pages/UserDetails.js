@@ -3,14 +3,15 @@ import { useParams, Link } from 'react-router-dom'
 import TopBar from "../components/TopBar"
 import SideBar from "../components/SideBar"
 import { BsArrowLeft } from 'react-icons/bs'
-import { AiOutlineUser } from 'react-icons/ai'
+//import { AiOutlineUser } from 'react-icons/ai'
 import {FcRating} from 'react-icons/fc'
 
-const Dashboard = () => {
+const UserDetails = () => {
 
     const [data, setData] = useState([])
-    const [userData, setUserData] = useState({})
-    const [usersFocus, setUsersFocus] = useState(true)
+    const [userData, setUserData] = useState(null)
+    const [userDataError, setUserDataError] = useState("")
+    const [usersFocus] = useState(true)
 
     const {id} = useParams()
 
@@ -27,7 +28,7 @@ const Dashboard = () => {
         .catch((err) => {
             console.log(err)
         })
-    }, [userData.email])
+    }, [])
 
     var avatar
     var userName
@@ -41,8 +42,18 @@ const Dashboard = () => {
         }
     }
 
-    setUserData(JSON.parse(localStorage.getItem("user")))
-    console.log(userData)
+    useEffect(() => {
+        if (localStorage.getItem("user")) {
+            console.log(localStorage.getItem("user"))
+            let user = localStorage.getItem("user")
+            setUserData(JSON.parse(user))
+            console.log(userData)
+            setUserDataError("")
+        }else {
+            setUserData({})
+            setUserDataError("Data not available at the moment.")
+        }
+    }, [userData])
 
     return (
         <div className="userdetails-container">
@@ -50,7 +61,7 @@ const Dashboard = () => {
             <div className="userdetails-body">
                 <SideBar usersFocus={usersFocus} email={email} />
                 <div className="details-main">
-                    <div className="details-container">
+                    { userData && <div className="details-container">
                         <Link to={`/users/${email}`} style={{textDecoration:"none"}} className="back-link"><BsArrowLeft className="arrow" /><span>Back to Users</span></Link>
                         <div className="text-btns">
                             <p>Users Details</p>
@@ -63,9 +74,9 @@ const Dashboard = () => {
                             <div className="intro-inner">
                                 <div className="upper-div">
                                     <div className="img-names">
-                                        <div className="img-div"><AiOutlineUser className="profile-img" /></div>
+                                        <div className="img-div"><img src={userData.profile.avatar} alt="Avatar" className="profile-img" /></div>
                                         <div className="name-div">
-                                            <p className="user-name">{userData.profile.firstName + " " + userData.profile.lastName}</p>
+                                            <p className="user-name">{userData.profile.firstName} {userData.profile.lastName}</p>
                                             <p className="user-id">{userData.accountNumber}</p>
                                         </div>
                                     </div>
@@ -95,7 +106,7 @@ const Dashboard = () => {
                                     <div className="fullname-marital">
                                         <div className="fullname">
                                             <p className="heading">FULL NAME</p>
-                                            <p className="content">{userData["profile"]["firstName"] + " " + userData["profile"]["lastName"]}</p>
+                                            <p className="content">{userData.profile.firstName} {userData.profile.lastName}</p>
                                         </div>
                                         <div className="marital">
                                             <p className="heading">MARITAL STATUS</p>
@@ -151,7 +162,7 @@ const Dashboard = () => {
                                         </div>
                                         <div className="income">
                                             <p className="heading">MONTHLY INCOME</p>
-                                            <p className="content">{userData.education.monthlyIncome[1] + "-" + userData.education.monthlyIncome[0]}</p>
+                                            <p className="content">#{userData.education.monthlyIncome[1]} - #{userData.education.monthlyIncome[0]}</p>
                                         </div>
                                     </div>
                                     <div className="sector-loan">
@@ -190,7 +201,7 @@ const Dashboard = () => {
                                 <div className="guarantor">
                                     <div className="guarantor-names">
                                         <p className="heading">FULL NAME</p>
-                                        <p className="content">{userData.guarantor.firstName + " " + userData.guarantor.lastName}</p>
+                                        <p className="content">{userData.guarantor.firstName} {userData.guarantor.lastName}</p>
                                     </div>
                                     <div className="guarantor-phone">
                                         <p className="heading">PHONE NUMBER</p>
@@ -207,11 +218,12 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>} 
+                    { !userData && <p className="userdata-error">{userDataError}</p>}
                 </div>
             </div>
         </div>
     )
 }
 
-export default Dashboard
+export default UserDetails

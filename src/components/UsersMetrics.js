@@ -2,7 +2,7 @@ import { FiUsers } from 'react-icons/fi'
 import { HiOutlineDocumentReport } from 'react-icons/hi'
 import { GiMoneyStack } from 'react-icons/gi'
 
-const UsersMetrics = ({data}) => {
+const UsersMetrics = ({data, showFilterButton, onShowFilterBox}) => {
 
     var loans = 0
     var savings = 0
@@ -17,7 +17,10 @@ const UsersMetrics = ({data}) => {
 
     return (
         <div>
-            <p>Users</p>
+            <div className="users-filter">
+                <p>Users</p>
+                { showFilterButton && <button onClick={onShowFilterBox}>Filter</button>}
+            </div>
             <div className="users-metrics">
                 <div className="box">
                     <div className="box1-div"><FiUsers /></div>

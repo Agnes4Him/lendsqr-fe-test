@@ -8,6 +8,8 @@ import DashboardUsersData from '../components/DashboardUsersData'
 const Dashboard = () => {
 
     const [data, setData] = useState([])
+    const [dataPresent, setDataPresent] = useState(false)
+    const [dashboardError, setDashboardError] = useState("")
     const [dashboardFocus, setDashboardFocus] = useState(true)
 
     const {email} = useParams()
@@ -25,10 +27,14 @@ const Dashboard = () => {
         .then((result) => {
             console.log(result)
             setData(result)
-        
+            setDataPresent(true)
+            setDashboardError("")
         })
         .catch((err) => {
             console.log("Error", err)
+            setData({})
+            setDataPresent(false)
+            setDashboardError("Unable to fetch data. Try again later")
         })
     }, [])
 
@@ -46,10 +52,11 @@ const Dashboard = () => {
             <div className="dashboard-body">
                 <SideBar dashboardFocus={dashboardFocus} email={email} />
                 <div className="main">
-                    <div className="main-inner">
+                    {dataPresent && <div className="main-inner">
                         <UsersMetrics data={data} />
                         <DashboardUsersData data={data} id={id} />
-                    </div>
+                    </div>}
+                    {!dataPresent && <p className="dashboard-error">{dashboardError}</p>}
                 </div>
             </div>
         </div>
